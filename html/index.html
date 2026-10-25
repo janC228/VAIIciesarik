@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MotorBike – motocykle a príslušenstvo jednoducho a výhodne.">
+    <title>MotorBike – Motocykle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="header-top container">
+        <a class="brand" href="#" aria-label="MotorBike – úvodná stránka">
+            <span class="brand-mark" aria-hidden="true">MB</span>
+            <span class="brand-text">
+                    <strong>MotorBike</strong>
+                    <small>Motocykle a príslušenstvo, jednoducho a výhodne</small>
+                </span>
+        </a>
+
+        <div class="header-actions">
+            <a href="#" class="header-link">Prihlásenie</a>
+            <a href="#" class="header-link">Obľúbené</a>
+            <a href="#" class="header-link cart-link"><span aria-hidden="true">🛒</span> Košík</a>
+        </div>
+    </div>
+
+    <nav class="main-nav" aria-label="Hlavná navigácia">
+        <div class="container nav-inner">
+            <a href="#">Domov</a>
+            <a class="active" href="#" aria-current="page">Motocykle</a>
+            <a href="#">Prilby</a>
+            <a href="#">Vybavenie</a>
+            <a href="#">Príslušenstvo</a>
+        </div>
+    </nav>
+</header>
+
+<main class="container page-content">
+    <section class="page-heading" aria-labelledby="page-title">
+        <div>
+            <h1 id="page-title">Katalóg produktov</h1>
+            <p class="intro">Vyber si motocykel, ktorý spĺňa tvoje požiadavky.</p>
+        </div>
+        <form class="search-form" role="search">
+            <label class="visually-hidden" for="product-search">Hľadať produkt</label>
+            <input id="product-search" type="search" placeholder="Hľadať produkt…">
+            <button type="submit">Hľadať</button>
+        </form>
+    </section>
+
+    <div class="catalog-layout">
+        <aside class="filters" aria-labelledby="filters-title">
+            <div class="filters-heading">
+                <h2 id="filters-title">Filtre</h2>
+            </div>
+
+            <form>
+                <fieldset>
+                    <legend>Kategória</legend>
+                    <label class="check-option"><input type="checkbox"> Adventure</label>
+                    <label class="check-option"><input type="checkbox"> Cestné</label>
+                    <label class="check-option"><input type="checkbox"> Enduro</label>
+                    <label class="check-option"><input type="checkbox"> Športové</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Značka</legend>
+                    <label class="check-option"><input type="checkbox"> BMW</label>
+                    <label class="check-option"><input type="checkbox"> Honda</label>
+                    <label class="check-option"><input type="checkbox"> KTM</label>
+                    <label class="check-option"><input type="checkbox"> Yamaha</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Cena (€)</legend>
+                    <div class="price-inputs">
+                        <label>
+                            <span class="visually-hidden">Cena od</span>
+                            <input type="number" min="0" placeholder="Od">
+                        </label>
+                        <span aria-hidden="true">–</span>
+                        <label>
+                            <span class="visually-hidden">Cena do</span>
+                            <input type="number" min="0" placeholder="Do">
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button class="button button-primary filter-button" type="submit">Použiť filtre</button>
+                <button class="button button-quiet filter-reset" type="reset">Zrušiť výber</button>
+            </form>
+        </aside>
+
+        <section class="products-section" aria-labelledby="products-title">
+            <div class="products-toolbar">
+                <div>
+                    <h2 id="products-title">Ponuka motocyklov</h2>
+                    <p class="result-count">Zobrazené 4 produkty</p>
+                </div>
+                <label class="sort-control">
+                    <span>Zobraziť podľa</span>
+                    <select aria-label="Zoradiť produkty">
+                        <option>Ceny – vzostupne</option>
+                        <option>Ceny – zostupne</option>
+                        <option>Názvu A – Z</option>
+                        <option>Názvu Z – A</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="product-grid">
+                <article class="product-card">
+                    <a href="#" class="product-image motorcycle-image alt-image" aria-label="Detail produktu Honda CRF250R">
+                        <span class="product-badge">Motocykel</span>
+                        <span class="illustration" aria-hidden="true">🏍️</span>
+                    </a>
+                    <div class="product-info">
+                        <p class="product-category">Enduro</p>
+                        <h3><a href="#">Honda CRF250R</a></h3>
+                        <p class="product-description">Motocykel vhodný do terénu a najnáročnejších podmienok.</p>
+                        <div class="product-bottom">
+                            <strong class="price">7 490 €</strong>
+                            <a class="button button-outline" href="#">Detail</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <a href="#" class="product-image motorcycle-image" aria-label="Detail produktu Yamaha MT-07">
+                        <span class="product-badge">Motocykel</span>
+                        <span class="illustration" aria-hidden="true">🏍️</span>
+                    </a>
+                    <div class="product-info">
+                        <p class="product-category">Cestné</p>
+                        <h3><a href="#">Yamaha MT-07</a></h3>
+                        <p class="product-description">Ľahký a obratný motocykel na každodenné jazdenie.</p>
+                        <div class="product-bottom">
+                            <strong class="price">8 990 €</strong>
+                            <a class="button button-outline" href="#">Detail</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <a href="#" class="product-image gear-image" aria-label="Detail produktu KTM 1290 Super Adventure">
+                        <span class="product-badge">Motocykel</span>
+                        <span class="illustration" aria-hidden="true">🏍️</span>
+                    </a>
+                    <div class="product-info">
+                        <p class="product-category">Adventure</p>
+                        <h3><a href="#">KTM 1290 Super Adventure</a></h3>
+                        <p class="product-description">Motocykel určený pre zdolávanie dlhých jázd.</p>
+                        <div class="product-bottom">
+                            <strong class="price">13 790 €</strong>
+                            <a class="button button-outline" href="#">Detail</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <a href="#" class="product-image gear-image alt-gear" aria-label="Detail produktu BMW S1000RR">
+                        <span class="product-badge">Motocykel</span>
+                        <span class="illustration" aria-hidden="true">🏍️</span>
+                    </a>
+                    <div class="product-info">
+                        <p class="product-category">Športové</p>
+                        <h3><a href="#">BMW S1000RR</a></h3>
+                        <p class="product-description">Najvýkonnejší stroj pre najrýchlejších jazdcov.</p>
+                        <div class="product-bottom">
+                            <strong class="price">27 990 €</strong>
+                            <a class="button button-outline" href="#">Detail</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div>
+            <strong>MotorBike</strong>
+            <p>Motocykle a príslušenstvo, jednoducho a výhodne.</p>
+        </div>
+        <div class="footer-links">
+            <a href="#">Informácie o obchode</a>
+            <a href="#">Doprava a platba</a>
+            <a href="#">Kontakt</a>
+        </div>
+        <p class="copyright">© 2026 MotorBike</p>
+    </div>
+</footer>
+</body>
+</html>
