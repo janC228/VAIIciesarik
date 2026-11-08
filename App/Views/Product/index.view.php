@@ -1,4 +1,7 @@
-
+<?php
+/** @var \App\Models\Motorcycle[] $motorcycles */
+/** @var \Framework\Support\LinkGenerator $link */
+?>
 <section class="page-heading" aria-labelledby="page-title">
     <div>
         <h1 id="page-title">Katalóg produktov</h1>
@@ -59,7 +62,7 @@
         <div class="products-toolbar">
             <div>
                 <h2 id="products-title">Ponuka motocyklov</h2>
-                <p class="result-count">Zobrazené 4 produkty</p>
+                <p class="result-count">Zobrazené produkty: <?= count($motorcycles) ?></p>
             </div>
 
             <label class="sort-control">
@@ -72,79 +75,62 @@
                 </select>
             </label>
         </div>
+        <p>
+            <a class="button button-primary"
+               href="<?= $link->url('product.add') ?>">
+                Pridať motocykel
+            </a>
+        </p>
 
         <div class="product-grid">
-            <article class="product-card">
-                <a href="#" class="product-image motorcycle-image alt-image" aria-label="Detail produktu Honda CRF250R">
-                    <span class="product-badge">Motocykel</span>
-                    <span class="illustration" aria-hidden="true">🏍️</span>
-                </a>
-
-                <div class="product-info">
-                    <p class="product-category">Enduro</p>
-                    <h3><a href="#">Honda CRF250R</a></h3>
-                    <p class="product-description">Motocykel vhodný do terénu a najnáročnejších podmienok.</p>
-
-                    <div class="product-bottom">
-                        <strong class="price">7 490 €</strong>
-                        <a class="button button-outline" href="#">Detail</a>
+            <?php foreach ($motorcycles as $motorcycle): ?>
+                <article class="product-card">
+                    <div class="product-image motorcycle-image">
+                <span class="product-badge">
+                    <?= e($motorcycle->getBrand() ?? '') ?>
+                </span>
+                        <span class="illustration" aria-hidden="true">🏍️</span>
                     </div>
-                </div>
-            </article>
 
-            <article class="product-card">
-                <a href="#" class="product-image motorcycle-image" aria-label="Detail produktu Yamaha MT-07">
-                    <span class="product-badge">Motocykel</span>
-                    <span class="illustration" aria-hidden="true">🏍️</span>
-                </a>
+                    <div class="product-info">
+                        <p class="product-category">
+                            <?= e($motorcycle->getCategory() ?? '') ?>
+                        </p>
 
-                <div class="product-info">
-                    <p class="product-category">Cestné</p>
-                    <h3><a href="#">Yamaha MT-07</a></h3>
-                    <p class="product-description">Ľahký a obratný motocykel na každodenné jazdenie.</p>
+                        <h3><?= e($motorcycle->getName() ?? '') ?></h3>
 
-                    <div class="product-bottom">
-                        <strong class="price">8 990 €</strong>
-                        <a class="button button-outline" href="#">Detail</a>
+                        <p class="product-description">
+                            <?= e($motorcycle->getDescription() ?? '') ?>
+                        </p>
+
+                        <div class="product-bottom">
+                            <strong class="price">
+                                <?= number_format($motorcycle->getPrice() ?? 0, 0, ',', ' ') ?> €
+                            </strong>
+
+                            <div class="crud-actions">
+                                <a class="button button-outline"
+                                   href="<?= $link->url('product.edit', [
+                                           'id' => $motorcycle->getId()
+                                   ]) ?>">
+                                    Upraviť
+                                </a>
+
+                                <form method="post"
+                                      action="<?= $link->url('product.delete') ?>">
+                                    <input type="hidden" name="id"
+                                           value="<?= (int)$motorcycle->getId() ?>">
+                                    <button class="button button-outline"
+                                            type="submit">
+                                        Odstrániť
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </article>
-
-            <article class="product-card">
-                <a href="#" class="product-image gear-image" aria-label="Detail produktu KTM 1290 Super Adventure">
-                    <span class="product-badge">Motocykel</span>
-                    <span class="illustration" aria-hidden="true">🏍️</span>
-                </a>
-
-                <div class="product-info">
-                    <p class="product-category">Adventure</p>
-                    <h3><a href="#">KTM 1290 Super Adventure</a></h3>
-                    <p class="product-description">Motocykel určený pre zdolávanie dlhých jázd.</p>
-
-                    <div class="product-bottom">
-                        <strong class="price">13 790 €</strong>
-                        <a class="button button-outline" href="#">Detail</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="product-card">
-                <a href="#" class="product-image gear-image alt-gear" aria-label="Detail produktu BMW S1000RR">
-                    <span class="product-badge">Motocykel</span>
-                    <span class="illustration" aria-hidden="true">🏍️</span>
-                </a>
-
-                <div class="product-info">
-                    <p class="product-category">Športové</p>
-                    <h3><a href="#">BMW S1000RR</a></h3>
-                    <p class="product-description">Najvýkonnejší stroj pre najrýchlejších jazdcov.</p>
-
-                    <div class="product-bottom">
-                        <strong class="price">27 990 €</strong>
-                        <a class="button button-outline" href="#">Detail</a>
-                    </div>
-                </div>
-            </article>
+                </article>
+            <?php endforeach; ?>
         </div>
+
     </section>
 </div>
